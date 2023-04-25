@@ -1,0 +1,17 @@
+/*
+Enter your query below.
+Please append a semicolon ";" at the end of the query
+*/
+
+
+go 
+
+select 
+      sku , 
+      product_name 
+from  PRODUCT p 
+left join invoice_item ii ON ii.product_id = p.id 
+
+where invoice_id is null 
+order by sku 
+    
