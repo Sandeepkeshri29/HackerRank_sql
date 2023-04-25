@@ -1,0 +1,2 @@
+# HackerRank_sql
+Hackerrank_SQL_solution
