@@ -1,0 +1,8 @@
+
+
+select emp_id,timestamp,datediff(MINUTE,lag(timestamp) over(partition by emp_id,day(timestamp) order by emp_id,timestamp),timestamp)/60 as weekendhours
+from weekend
+where DATENAME(WEEKDAY, timestamp) in ('saturday','sunday'))
+select emp_id, sum(weekendhours) weekendhours from w
+group by emp_id
+order by weekendhours desc
