@@ -1,0 +1,10 @@
+
+select emp_id, sum(WorkedTime) as TotalWorkTime from 
+
+(select emp_id, (datediff(MINUTE, min(timestamp),max(timestamp))/60) as workedTime from [Attendance]
+
+where datepart(DW, timestamp) in(1,7)
+group by emp_id, datepart(DW, timestamp)
+) as temp
+group by emp_id
+order by TotalWorkTime desc
